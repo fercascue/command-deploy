@@ -28,4 +28,4 @@ jobs:
       - name: ping
         if: ${{ steps.command.outputs.continue == 'true' }}
         run: |
-          echo "comment_body: ${{ steps.command.outputs.comment_body }}"
+          echo "params: ${{ steps.command.outputs.comment_body }}"
