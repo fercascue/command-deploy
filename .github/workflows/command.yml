@@ -27,4 +27,5 @@ jobs:
       # conditionally run some logic here
       - name: ping
         if: ${{ steps.command.outputs.continue == 'true' }}
-        run: echo "DEPLOY_MESSAGE=NOOP Result:\nI would have **updated** 1 server" >> $GITHUB_ENV
+        run: |
+            echo "body: ${{ steps.command.outputs.comment_body }}"
