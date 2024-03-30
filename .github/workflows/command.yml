@@ -17,7 +17,7 @@ jobs:
     steps:
       # execute IssueOps command logic, hooray!
       # this will be used to "gate" all future steps below
-      - uses: github/command@vX.X.X
+      - uses: github/command@v1.1.0
         id: command
         with:
           command: ".ping"
