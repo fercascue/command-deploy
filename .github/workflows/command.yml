@@ -8,24 +8,38 @@ on:
 # permissions needed for reacting to IssueOps commands on issues and PRs
 permissions:
   pull-requests: write
-  issues: write
+  deployments: write
+  contents: write
   checks: read
+  statuses: read
 
 jobs:
   demo:
+    if: ${{ github.event.issue.pull_request }} # only run on pull request comments
     runs-on: ubuntu-latest
     steps:
-      # execute IssueOps command logic, hooray!
-      # this will be used to "gate" all future steps below
-      - uses: github/command@v1.1.0
-        id: command
+      # Execute IssueOps branch deployment logic, hooray!
+      # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
+      - uses: github/branch-deploy@v9.1.1
+        id: branch-deploy
         with:
-          command: ".ping"
+          trigger: ".deploy"
 
-      # run your custom logic for your project here - example seen below
+      # Run your deployment logic for your project here - examples seen below
 
-      # conditionally run some logic here
-      - name: ping
-        if: ${{ steps.command.outputs.continue == 'true' }}
-        run: |
-          echo "comment_body: ${{ steps.command.outputs.comment_body }}"
+      # Checkout your projects repository based on the ref provided by the branch-deploy step
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.branch-deploy.outputs.ref }}
+
+      # Do some fake "noop" deployment logic here
+      # conditionally run a noop deployment
+      - name: fake noop deploy
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop == 'true' }}
+        run: echo "I am doing a fake noop deploy"
+
+      # Do some fake "regular" deployment logic here
+      # conditionally run a regular deployment
+      - name: fake regular deploy
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop != 'true' }}
+        run: echo "I am doing a fake regular deploy"
