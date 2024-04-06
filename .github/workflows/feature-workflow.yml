@@ -1,0 +1,33 @@
+name: Feature Worflow
+on:
+  push:
+    branches:
+      - "feature/*"
+jobs:
+    activate-workflow-base: 
+        name: Detect changes in base project
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: read
+            contents: read  
+        outputs:
+            file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 20
+          - name: Detecting changes in base folder
+            id: changed-files-dir-names
+            uses: tj-actions/changed-files@v35.6.4
+            with:
+              dir_names: true
+              dir_names_max_depth: 0
+              json: true
+              json_raw_format: true
+              files_ignore: |
+                    .github
+              dir_names_exclude_root: false
+          - name: List all changed files
+            run: echo ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+    
