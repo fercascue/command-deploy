@@ -30,4 +30,15 @@ jobs:
               dir_names_exclude_root: false
           - name: List all changed files
             run: echo ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+    build-feature-base:
+      name: Build feature base ${{ github.ref_name }}
+      needs: activate-workflow-base
+      if: ${{ needs.activate-workflow-base.outputs.file_changes != '[]' }}
+      strategy:
+        matrix:
+          folder: ${{ fromJSON(needs.activate-workflow-base.outputs.file_changes) }}
+      uses: ./.github/workflows/build-workflow.yml
+      with:
+        resource: ${{ (matrix.folder) }}
+      secrets: inherit        
     

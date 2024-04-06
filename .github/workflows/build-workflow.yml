@@ -1,0 +1,67 @@
+name: Build Workflow
+on:
+  workflow_call:
+    inputs:
+      stage:
+        required: false
+        type: string
+      resource:  
+        required: false
+        type: string
+      java-version:
+        required: false
+        type: string
+        default: '11'
+      maven-params:
+        required: false
+        type: string
+        default: ''
+jobs:
+  build-artifact:
+    name: Build artifact for ${{ inputs.resource }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+     
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ inputs.resource }} 
+
+    steps:
+     - name: Checkout code for ${{ inputs.resource }} 
+       uses: actions/checkout@v4
+     - name: Set up Java for building ${{ inputs.resource }} 
+       uses: actions/setup-java@v3
+       with:
+         java-version: '11'
+         distribution: 'temurin'
+         server-id: github
+         settings-path: ${{ github.workspace }}
+
+     - name: Build with Maven ${{ inputs.resource }}
+       run: mvn clean install
+  
+  lint-codebase:
+    name: Lint Code Base for ${{ inputs.resource }}
+    runs-on: ubuntu-latest
+    needs: build-artifact
+    permissions:
+      contents: read  
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ inputs.resource }} 
+    steps:
+     - name: Checkout Code for 
+       uses: actions/checkout@v3
+     - uses: github/super-linter/slim@v4
+       env:
+         VALIDATE_ALL_CODEBASE: false
+         DEFAULT_BRANCH: ${{ github.head_ref }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         VALIDATE_JAVA: true
+         DISABLE_ERRORS: true
+         
+           
