@@ -53,12 +53,12 @@ jobs:
         shell: bash
         working-directory: ${{ inputs.resource }} 
     steps:
-     - name: Checkout Code for $GITHUB_WORKSPACE/${{ inputs.resource }} 
+     - name: Checkout Code for ${{ inputs.resource }} 
        uses: actions/checkout@v4
-     - run: |
-        echo ${{ github.workspace }}
-        echo $GITHUB_WORKSPACE  
-     - uses: github/super-linter/slim@v4
+       with:
+         fetch-depth: 0
+     - name: Linting folder ${{ inputs.resource }} 
+       uses: github/super-linter/slim@v4
        env:
          FILTER_REGEX_INCLUDE: .*src/.*
          FILTER_REGEX_EXCLUDE: .*test/.*
