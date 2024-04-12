@@ -51,9 +51,9 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ inputs.resource }} 
+        working-directory: ${{ github.workspace }}/${{ inputs.resource }} 
     steps:
-     - name: Checkout Code for ${{ inputs.resource }} 
+     - name: Checkout Code for ${{ github.workspace }}/${{ inputs.resource }} 
        uses: actions/checkout@v4
      - run: |
         echo ${{ github.workspace }}
