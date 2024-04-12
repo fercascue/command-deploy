@@ -53,12 +53,16 @@ jobs:
         shell: bash
         working-directory: ${{ inputs.resource }} 
     steps:
-     - name: Checkout Code for 
-       uses: actions/checkout@v3
+     - name: Checkout Code for ${{ inputs.resource }} 
+       uses: actions/checkout@v4
+     - run: |
+        echo ${{ github.workspace }}
+        echo $GITHUB_WORKSPACE  
      - uses: github/super-linter/slim@v4
        env:
+         FILTER_REGEX_INCLUDE: .*src/.*
+         FILTER_REGEX_EXCLUDE: .*test/.*
          VALIDATE_ALL_CODEBASE: false
-         DEFAULT_BRANCH: ${{ github.head_ref }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          VALIDATE_JAVA: true
          DISABLE_ERRORS: true
