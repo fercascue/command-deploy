@@ -40,5 +40,22 @@ jobs:
       uses: ./.github/workflows/build-workflow.yml
       with:
         resource: ${{ (matrix.folder) }}
-      secrets: inherit        
+      secrets: inherit
+    complete:
+      # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
+      name: Complete CI for feature 
+      needs: build-feature-base
+      if: ${{ always() }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check all job status
+          # see https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#needs-context
+          # see https://stackoverflow.com/a/67532120/4907315
+          if: >-
+            ${{
+                 contains(needs.*.result, 'failure')
+              || contains(needs.*.result, 'cancelled')
+              
+            }}
+          run: exit 1  
     
