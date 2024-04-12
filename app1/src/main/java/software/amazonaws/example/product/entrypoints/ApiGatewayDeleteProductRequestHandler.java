@@ -17,7 +17,7 @@ import java.util.Map;
 import static software.amazon.awssdk.http.Header.CONTENT_TYPE;
 
 public class ApiGatewayDeleteProductRequestHandler implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
-
+//Adding some comments
     private static final Logger logger = LoggerFactory.getLogger(ApiGatewayDeleteProductRequestHandler.class);
     private final ProductStore productStore = new DynamoDbProductStore();
 
