@@ -51,7 +51,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ github.workspace }}/${{ inputs.resource }} 
+        working-directory: ${{ inputs.resource }} 
     steps:
      - name: Checkout Code for ${{ github.workspace }}/${{ inputs.resource }} 
        uses: actions/checkout@v4
@@ -63,6 +63,7 @@ jobs:
          FILTER_REGEX_INCLUDE: .*src/.*
          FILTER_REGEX_EXCLUDE: .*test/.*
          VALIDATE_ALL_CODEBASE: false
+         GITHUB_WORKSPACE: ${{ github.workspace }}/${{ inputs.resource }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          VALIDATE_JAVA: true
          DISABLE_ERRORS: true
