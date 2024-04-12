@@ -1,0 +1,90 @@
+customer-portal-back:
+  - '**/*'
+ci/cd:
+  - .github/workflows/*
+container-definition:
+ - Dockerfile
+layer:
+  - "*layer*"
+documentation:
+  - README.md
+  - ./*.md
+model:
+  - model/**
+jwt:
+  - jwt/**
+persistence:
+  - persistence/**
+s3-manager:
+  - s3-manager/**
+sqs-manager:
+  - sqs-manager/**
+sns-manager:
+  - sns-manager/**
+sftp-manager:
+  - sftp-manager/**
+jwt-layer:
+  - jwt-layer/**
+persistence-layer:
+  - persistence-layer/**
+sap-layer:
+  - sap-layer/**
+addresses:
+  - addresses/** 
+auth:
+  - auth/**
+readings:
+  - readings/**
+sign-up:
+  - sign-up/**
+social-bonus:
+  - social-bonus/**
+superadmin-process:
+  - superadmin-process/**
+profile:
+  - profile/**
+points:
+  - points/**
+managements:
+  - managements/** 
+invoices-splitting:
+  - invoices-splitting/**      
+invoices-payment-gw-orders:
+  - invoices-payment-gw-orders/**
+invoices-payment-card-token:
+  - invoices-payment-card-token/**
+invoices-payment:
+  - invoices-payment/**
+invoices:
+  - invoices/**
+inquires:
+  - inquires/**  
+help:
+  - help/**
+facilita-hiring:
+  - facilita-hiring/**
+facilita-data:
+  - facilita-data/**
+facilita-check:
+  - facilita-check/**
+facilita-appliances:
+  - facilita-appliances/**
+facilita:
+  - facilita/**
+contracts-power-change:
+  - contracts-power-change/**      
+contracts-power-advisory:
+  - contracts-power-advisory/**
+contracts:
+  - contracts/**  
+consumption:
+  - consumption/**  
+common-layer:
+  - common-layer/** 
+dependency-management:
+ - pom.xml
+testing-suite:
+- "TEST*.*"
+infrastructure:
+ - .github/*
+ - .github/**/*

@@ -1,0 +1,67 @@
+name: Build artifact
+on:
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
+    branches:
+      - develop
+      - main
+permissions:
+      id-token: write
+      contents: read    # This is required for actions/checkout
+      security-events: write  # To upload sarif files
+      actions: read
+      packages: write
+      issues: write
+      pull-requests: write
+jobs:
+   greeting:
+      name: First step interaction
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/first-interaction@v1
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            issue-message: 'Message that will be displayed on users first issue'
+            pr-message: 'Message that will be displayed on users first pr'
+
+   lint-pull-request:
+      name: Validate pull request format
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout code from repository
+           uses: actions/checkout@v4
+         - name: Install dependencies for lint pull request
+           run: npm install @commitlint/config-conventional@18.5.0
+         - name: Running pull request lint
+           uses: JulienKode/pull-request-name-linter-action@v0.5.0
+           with:
+            configuration-path: ./.github/workflows/config/commitlint.config.js
+         - name: Create pr comment for lint 
+           uses: peter-evans/create-or-update-comment@v2
+           id: create-comment
+           with:
+             issue-number:  ${{ github.event.pull_request.number }}
+             body: |
+               github-actions [bot] approves this pull request comment
+             reactions: rocket
+   triage:
+       name: Label pull rquest
+       needs: lint-pull-request
+       permissions:
+            contents: read
+            pull-requests: write
+       runs-on: ubuntu-latest
+       steps:
+          - uses: actions/labeler@v4
+              
+   auto-approve:
+       name: Auto approve pull request
+       runs-on: ubuntu-latest
+       needs: triage
+       permissions:
+         pull-requests: write
+       steps:
+          - uses: hmarr/auto-approve-action@v2
+            with:
+               pull-request-number: ${{ github.event.pull_request.number }}
+               review-message: "Auto approved automated PR"
