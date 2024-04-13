@@ -45,10 +45,7 @@ jobs:
      - name: Example step using Maven plugin  # https://graalvm.github.io/native-build-tools/latest/maven-plugin.html
        run: mvn -Pnative package
      - name: Unzip content
-       run: |
-         cd target
-         unzip -o ${{ inputs.resource }}.zip
-         ls -la
+       run: unzip -o ./target/${{ inputs.resource }}.zip
   lint-codebase:
     name: Lint Code Base for ${{ inputs.resource }}
     runs-on: ubuntu-latest
