@@ -33,7 +33,7 @@ jobs:
        uses: actions/checkout@v4
      - uses: graalvm/setup-graalvm@v1
        with:
-          java-version: '11'      # See 'Options' section below for all supported versions
+          java-version: '17'      # See 'Options' section below for all supported versions
           distribution: 'graalvm-community' # See 'Options' section below for all available distributions
           github-token: ${{ secrets.GITHUB_TOKEN }}
      - name: Example step
