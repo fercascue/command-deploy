@@ -47,7 +47,7 @@ jobs:
      - name: Unzip content
        run: |
          cd target
-         unzip -o function.zip
+         unzip -o ${{ inputs.resource }}.zip
          ls -la
   lint-codebase:
     name: Lint Code Base for ${{ inputs.resource }}
