@@ -17,8 +17,21 @@ on:
         type: string
         default: ''
 jobs:
+  dependency-review:
+   name: Check dependency review
+   runs-on: ubuntu-latest
+   defaults:
+      run:
+        shell: bash
+        working-directory: ${{ inputs.resource }}
+   steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v4
+     - name: Dependency Review
+       uses: actions/dependency-review-action@v4
   build-artifact:
     name: Build artifact for ${{ inputs.resource }}
+    needs: dependency-review
     runs-on: ubuntu-latest
     permissions:
       contents: read
