@@ -1,0 +1,25 @@
+project:
+  name: sample
+  description: sample
+  website: https://github.com
+  authors:
+    - sample
+  license: Apache-2.0
+  extraProperties:
+    inceptionYear: 2022
+
+release:
+  github:
+    branch: main
+    overwrite: true
+    milestone:
+      name: '{{projectVersion}}'
+    changelog:
+      sort: DESC
+      formatted: ALWAYS
+      format: '- {{commitShortHash}} {{commitTitle}}'
+      contributors:
+        format: '- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}'
+      hide:
+        contributors:
+          - 'GitHub'
