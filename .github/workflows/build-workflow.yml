@@ -17,6 +17,7 @@ on:
         type: string
         default: ''
 jobs:
+  
   build-artifact:
     name: Build artifact for ${{ inputs.resource }}
     runs-on: ubuntu-latest
@@ -31,17 +32,21 @@ jobs:
     steps:
      - name: Checkout code for ${{ inputs.resource }} 
        uses: actions/checkout@v4
-     - name: Set up Java for building ${{ inputs.resource }} 
-       uses: actions/setup-java@v4
+     - uses: graalvm/setup-graalvm@v1
        with:
-         java-version: '11'
-         distribution: 'temurin'
-         server-id: github
-         settings-path: ${{ github.workspace }}
-
-     - name: Build with Maven ${{ inputs.resource }}
-       run: mvn clean install -Dmaven.test.skip=true
-  
+          java-version: '17'      # See 'Options' section below for all supported versions
+          distribution: 'graalvm-community' # See 'Options' section below for all available distributions
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+     - name: Example step
+       run: |
+          echo "GRAALVM_HOME: $GRAALVM_HOME"
+          echo "JAVA_HOME: $JAVA_HOME"
+          java --version
+          native-image --version
+     - name: Example step using Maven plugin  # https://graalvm.github.io/native-build-tools/latest/maven-plugin.html
+       run: mvn -Pnative package
+     - name: Unzip content
+       run: unzip -o ./target/${{ inputs.resource }}.zip
   lint-codebase:
     name: Lint Code Base for ${{ inputs.resource }}
     runs-on: ubuntu-latest
