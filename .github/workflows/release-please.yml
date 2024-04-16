@@ -25,6 +25,10 @@ jobs:
     triage: 
         needs: release-please
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pull-requests: write
         steps:
-            - run: echo ${{ needs.release-please.outputs.TARGET_ENV }}     
-
+            - run: | 
+               echo ${{ needs.release-please.outputs.TARGET_ENV }}     
+               gh pr edit ${{ needs.release-please.outputs.TARGET_ENV }} --add-label "auto-merge"
