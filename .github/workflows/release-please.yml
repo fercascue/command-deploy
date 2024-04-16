@@ -35,4 +35,4 @@ jobs:
               uses: actions/checkout@v4
             - run: | 
                echo ${{ needs.release-please.outputs.TARGET_ENV }}     
-               gh pr merge ${{ needs.release-please.outputs.TARGET_ENV }} --auto --merge
+               gh pr merge ${{ needs.release-please.outputs.TARGET_ENV }} --auto --rebase
