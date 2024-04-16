@@ -1,0 +1,61 @@
+name: Feature Worflow
+on:
+  push:
+    branches:
+      - "feature/*"
+jobs:
+    activate-workflow-base: 
+        name: Detect changes in base project
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: read
+            contents: read  
+        outputs:
+            file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 20
+          - name: Detecting changes in base folder
+            id: changed-files-dir-names
+            uses: tj-actions/changed-files@v35.6.4
+            with:
+              dir_names: true
+              dir_names_max_depth: 0
+              json: true
+              json_raw_format: true
+              files_ignore: |
+                    .github
+              dir_names_exclude_root: false
+          - name: List all changed files
+            run: echo ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+    build-feature-base:
+      name: Build feature base ${{ github.ref_name }}
+      needs: activate-workflow-base
+      if: ${{ needs.activate-workflow-base.outputs.file_changes != '[]' }}
+      strategy:
+        matrix:
+          folder: ${{ fromJSON(needs.activate-workflow-base.outputs.file_changes) }}
+      uses: ./.github/workflows/build-workflow.yml
+      with:
+        resource: ${{ (matrix.folder) }}
+      secrets: inherit
+    complete:
+      # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
+      name: Complete CI for feature 
+      needs: build-feature-base
+      if: ${{ always() }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check all job status
+          # see https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#needs-context
+          # see https://stackoverflow.com/a/67532120/4907315
+          if: >-
+            ${{
+                 contains(needs.*.result, 'failure')
+              || contains(needs.*.result, 'cancelled')
+              
+            }}
+          run: exit 1  
+    

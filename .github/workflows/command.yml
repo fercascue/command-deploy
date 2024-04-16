@@ -24,6 +24,11 @@ jobs:
         id: branch-deploy
         with:
           trigger: ".deploy"
+          noop_trigger: ".noop"
+          reaction: "eyes"
+          environment: development # the default environment
+          environment_targets: "development,staging" 
+          stable_branch: "main"
 
       # Run your deployment logic for your project here - examples seen below
 
