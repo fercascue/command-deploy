@@ -19,5 +19,5 @@ jobs:
             #token: ${{ secrets.PAT }}
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
-            release-type: java
-        
+            release-type: maven
+        - run: echo  "${{ steps.release.outputs.releases_created }}-${{ steps.release.outputs.prs_created }}-${{ steps.release.outputs.pr }}"
