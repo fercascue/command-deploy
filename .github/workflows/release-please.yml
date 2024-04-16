@@ -10,7 +10,7 @@ jobs:
     release-please:
       runs-on: ubuntu-latest
       steps:
-        - uses: google-github-actions/release-please-action@v4
+        - uses: google-github-actions/release-please-action@v3
           id: release
           with:
             # this assumes that you have created a personal access token
@@ -20,4 +20,4 @@ jobs:
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
             release-type: maven
-        - run: echo  "${{ steps.release.outputs.prs }}"
+        - run: echo  "${{ steps.release.outputs.pr }}"
