@@ -10,7 +10,7 @@ jobs:
     release-please:
       runs-on: ubuntu-latest
       outputs:
-        TARGET_ENV: ${{fromJson(steps.release.outputs.pr).number}}
+        TARGET_ENV: ${{steps.release.outputs.pr}}
       steps:
         - uses: google-github-actions/release-please-action@v3
           id: release
@@ -25,6 +25,7 @@ jobs:
     triage: 
         needs: release-please
         runs-on: ubuntu-latest
+        if: ${{ needs.release-please.outputs.TARGET_ENV != null }}
         permissions:
             contents: read
             pull-requests: write
@@ -34,5 +35,5 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
             - run: | 
-               echo ${{ needs.release-please.outputs.TARGET_ENV }}     
-               gh pr merge ${{ needs.release-please.outputs.TARGET_ENV }} --auto --rebase
+               echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
+               gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --rebase
