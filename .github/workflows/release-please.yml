@@ -37,3 +37,37 @@ jobs:
             - run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
                gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --rebase
+
+    release-please-develop:
+        runs-on: ubuntu-latest
+        needs: triage
+        outputs:
+            TARGET_ENV_DEV: ${{steps.release-dev.outputs.pr}}
+        steps:
+          - uses: google-github-actions/release-please-action@v3
+            id: release-dev
+            with:
+                # this assumes that you have created a personal access token
+                # (PAT) and configured it as a GitHub action secret named
+                # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
+                #token: ${{ secrets.PAT }}
+                # this is a built-in strategy in release-please, see "Action Inputs"
+                # for more options
+                release-type: maven
+                target-branch: develop
+    triage-develop: 
+        needs: release-please-develop
+        runs-on: ubuntu-latest
+        if: ${{ needs.release-please-develop.outputs.TARGET_ENV_DEV != null }}
+        permissions:
+            contents: read
+            pull-requests: write
+        env:
+            GH_TOKEN: ${{ secrets.PAT }}    
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+            - run: | 
+                echo ${{ fromJson(needs.release-please-develop.outputs.TARGET_ENV_DEV).number }}     
+                gh pr merge ${{ fromJson(needs.release-please-develop.outputs.TARGET_ENV_DEV).number}} --auto --rebase
+                     
