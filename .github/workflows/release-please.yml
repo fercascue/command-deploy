@@ -22,6 +22,6 @@ jobs:
             release-type: maven
         - run: |
            echo  ${{ toJSON(steps.release.outputs.pr) }}
-           echo "PORT=${{fromJson(steps.release.outputs.pr).port}}" >> $GITHUB_OUTPUT
+           echo "PORT=${{fromJson(steps.release.outputs.pr).number}}" >> $GITHUB_OUTPUT
         - run: echo $PORT
 
