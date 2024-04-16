@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.6.0](https://github.com/fercascue/command-deploy/compare/v1.5.0...v1.6.0) (2024-04-16)
+
+
+### Features
+
+* update app1 ([69d932a](https://github.com/fercascue/command-deploy/commit/69d932afb20b43ee73fe2fc814b9454c1e951aee))
+* update app1 ([81b4843](https://github.com/fercascue/command-deploy/commit/81b48436be839b299f34a72b874965ad84fdc0e5))
+* update app1 ([4fe4280](https://github.com/fercascue/command-deploy/commit/4fe4280deef7ac8cba3f336a586ba06e617abe61))
+* update app1 ([ad98f13](https://github.com/fercascue/command-deploy/commit/ad98f13a7508fb73adf4331886052cceef30a808))
+* update app1 ([b221be4](https://github.com/fercascue/command-deploy/commit/b221be43dbe75b070514896f2457e4f5266d99bf))
+* update app1 ([7857209](https://github.com/fercascue/command-deploy/commit/785720977ca04cbeebb1497b9d07663052015c31))
+* update app1 ([6a53d3e](https://github.com/fercascue/command-deploy/commit/6a53d3eefd79667fbe206d18396045bd217e6b94))
+* update app1 ([b400e21](https://github.com/fercascue/command-deploy/commit/b400e21bd39ada17b3cafee5f809a9ec299a79b2))
+* update app1 ([949732f](https://github.com/fercascue/command-deploy/commit/949732fdecdbd910a3fe14baffd786fde6a7ae67))
+* update app1 ([b4c5e4e](https://github.com/fercascue/command-deploy/commit/b4c5e4e48e7c960f03d52aa8765f4b6642120e90))
+* update app1 ([8c06d5c](https://github.com/fercascue/command-deploy/commit/8c06d5c7bffdec9538805c0261da6c43e190d0d6))
+* update app1 ([cf44d65](https://github.com/fercascue/command-deploy/commit/cf44d65787ca1f4a11a3057ef3fdfec3da7edf80))
+* update app1 ([68c389d](https://github.com/fercascue/command-deploy/commit/68c389d1323e3a88cab2afd914d785407756d267))
+* update app1 ([cdd41ab](https://github.com/fercascue/command-deploy/commit/cdd41ab4c8bd5e840574f7d10149aa45d873b7d4))
+* update app1 ([f0b37af](https://github.com/fercascue/command-deploy/commit/f0b37af1f43c306bfb2767ee71d1d1354ea3d56b))
+* update app1 ([31921f0](https://github.com/fercascue/command-deploy/commit/31921f0eeea93b03af9ad738212a89c94a833404))
+
 ## [1.5.0](https://github.com/fercascue/command-deploy/compare/v1.4.0...v1.5.0) (2024-04-16)
 
 
