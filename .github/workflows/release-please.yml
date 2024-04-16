@@ -11,6 +11,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: google-github-actions/release-please-action@v4
+          id: release
           with:
             # this assumes that you have created a personal access token
             # (PAT) and configured it as a GitHub action secret named
@@ -18,4 +19,8 @@ jobs:
             #token: ${{ secrets.PAT }}
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
+            skip-github-pull-request: true
             release-type: maven
+        - run: |
+            echo  "${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
+            echo "changelog: ${{ steps.release.outputs.changelog }}"     
