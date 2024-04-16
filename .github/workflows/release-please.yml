@@ -19,6 +19,5 @@ jobs:
             #token: ${{ secrets.PAT }}
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
-            skip-github-pull-request: true
             release-type: maven
         
