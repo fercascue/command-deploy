@@ -21,6 +21,4 @@ jobs:
             # for more options
             skip-github-pull-request: true
             release-type: maven
-        - run: |
-            echo  "${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
-            echo "changelog: ${{ steps.release.outputs.changelog }}"     
+        
