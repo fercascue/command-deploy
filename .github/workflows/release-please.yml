@@ -31,6 +31,8 @@ jobs:
         env:
             GH_TOKEN: ${{ github.token }}    
         steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
             - run: | 
                echo ${{ needs.release-please.outputs.TARGET_ENV }}     
                gh pr edit ${{ needs.release-please.outputs.TARGET_ENV }} --add-label "auto-merge"
