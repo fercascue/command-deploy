@@ -7,13 +7,13 @@
     <packaging>jar</packaging>
     <name>App1</name>    
          
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aws.java.sdk.version>2.17.214</aws.java.sdk.version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
