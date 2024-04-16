@@ -5,6 +5,7 @@ project:
   authors:
     - sample
   license: Apache-2.0
+  version: 1.0.0
   extraProperties:
     inceptionYear: 2022
 
