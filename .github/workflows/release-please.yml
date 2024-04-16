@@ -20,4 +20,8 @@ jobs:
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
             release-type: maven
-        - run: echo  ${{ toJSON(steps.release.outputs.pr) }}
+        - run: |
+           echo  ${{ toJSON(steps.release.outputs.pr) }}
+           echo "PORT=${{fromJson(steps.release.outputs.pr).port}}" >> $GITHUB_OUTPUT
+        - run: echo $PORT
+
