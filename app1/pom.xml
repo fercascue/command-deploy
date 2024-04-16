@@ -14,6 +14,8 @@
         <aws.java.sdk.version>2.17.214</aws.java.sdk.version>
     </properties>
 
+    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
