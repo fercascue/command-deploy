@@ -26,7 +26,7 @@ jobs:
           trigger: ".deploy"
           noop_trigger: ".noop"
           reaction: "eyes"
-          environment: "develop"
+          environment: "development"
           stable_branch: "main"
 
       # Run your deployment logic for your project here - examples seen below
