@@ -51,4 +51,8 @@ jobs:
                 fetch-depth: 0
             - name: Check diff
               run: git diff --name-only origin/main origin/develop
+            - name: Merge  
+              run: |
+                 git checkout origin/develop
+                 git merge origin/main
             
