@@ -71,7 +71,7 @@ jobs:
                 ls
                 git status
                 git commit --message "Prepare stage redeploy"
-                git push --set-upstream origin myFeature
+                git push --set-upstream origin/myFeature
             - name: Checkout Repository
               uses: actions/checkout@v4
               with:
