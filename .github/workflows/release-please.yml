@@ -61,27 +61,19 @@ jobs:
             - name: Create branch from develop
               run: |
                 git checkout develop
-                git checkout -b myFeature develop
+                git checkout -b feature/myFeature develop
                 touch filename.txt
                 git log --pretty="- %s" > filename.txt
                 cat filename.txt
                 git add filename.txt
-                git config --local user.name github-actions
-                git config --local user.email "github-actions@github.com"
-                ls
-                git status
                 git commit --message "Prepare stage redeploy"
-                git push --set-upstream origin/myFeature
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 0    
+                git push --set-upstream origin feature/myFeature
             - name: Create pull request into develop
               uses: peter-evans/create-pull-request@v4
               id: cprdev
               with:
                 token: ${{ secrets.PAT }}
-                branch: myFeature
+                branch: feature/myFeature
                 base: develop
                 title: 'feat: Recreate stage'
                 labels: |
