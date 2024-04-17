@@ -55,7 +55,7 @@ jobs:
             id: cprdev
             with:
               token: ${{ secrets.PAT }}
-              branch: develop
+              branch: main
               title: 'feat: main into develop'
               labels: |
                     develop
