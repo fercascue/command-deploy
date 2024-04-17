@@ -34,7 +34,17 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
-            - run: | 
-               echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
-               gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --merge
-   
+            - name: Enable automerge 
+              uses: peter-evans/enable-pull-request-automerge@v2
+              with:
+                token: ${{ secrets.PAT }}
+                pull-request-number: ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}}
+                merge-method: merge
+
+    develop: 
+      needs: release-please
+      runs-on: ubuntu-latest
+      if: ${{ needs.release-please.outputs.TARGET_ENV == null }}
+      steps:
+            - run: git diff main develop 
+            - run: git diff develop main
