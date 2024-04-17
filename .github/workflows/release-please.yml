@@ -57,22 +57,30 @@ jobs:
                  git merge main --commit
                  git push
             - name: Delete branch
-              run: git push origin --delete release-please--branches--main  
-            - name: Create branch from develop
+              run: git push origin --delete release-please--branches--main
+            - name: Check out code
+              uses: actions/checkout@v4
+              with:
+                #fetch-depth: 0
+                token: ${{ secrets.PAT }} 
+            - name: Initialize mandatory git config
               run: |
-                git checkout -b myFeature develop
+               git config user.name "GitHub Actions"
+               git config user.email noreply@github.com            
+            - name: Create branch from develop
+              run: git checkout -b myFeature develop
+            - name: Script     
+              run: |
                 git log --pretty="- %s" > CHANGELOG.md
                 cat CHANGELOG.md
+            - name: Commit changes
+              run: |      
                 touch filename.txt
                 git add filename.txt
                 git config --local user.name github-actions
                 git config --local user.email github-actions@github.com
                 git commit --message "Prepare stage redeploy"
                 git push origin myFeature
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 0    
             - name: Create pull request into develop
               uses: peter-evans/create-pull-request@v4
               id: cprdev
@@ -87,4 +95,7 @@ jobs:
                 body: |
                     Hi!
                     This PR was created in response workflow running to release.        
-            
+            - name: Check outputs
+              if: ${{ steps.cprdev.outputs.pull-request-number }}
+              run: |
+                echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}" 
