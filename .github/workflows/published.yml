@@ -1,0 +1,16 @@
+name: After Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+    - name: Checkout local repository
+      uses: actions/checkout@v4
+
+    - run: echo test
