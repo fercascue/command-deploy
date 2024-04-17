@@ -56,4 +56,6 @@ jobs:
                  git checkout develop
                  git merge main --commit
                  git push
+            - name: Delete branch
+              run: git branch -D release-please--branches--main     
             
