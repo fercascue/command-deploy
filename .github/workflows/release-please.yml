@@ -47,12 +47,11 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
-              with:
-                fetch-depth: 0
+
             - name: Check diff
               run: git diff --name-only origin/main origin/develop
             - name: Merge  
               run: |
-                 git checkout origin/develop
-                 git merge origin/main
+                 git checkout develop
+                 git merge main
             
