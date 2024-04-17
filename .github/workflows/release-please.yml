@@ -64,8 +64,7 @@ jobs:
                 git checkout -b myFeature develop
                 git log --pretty="- %s" > CHANGELOG.md
                 cat CHANGELOG.md
-                touch filename.txt
-                git add filename.txt
+                git add CHANGELOG.txt
                 git config --local user.name github-actions
                 git config --local user.email github-actions@github.com
                 git commit --message "Prepare stage redeploy"
