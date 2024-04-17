@@ -67,10 +67,9 @@ jobs:
                 cat filename.txt
                 git add filename.txt
                 git config --local user.name github-actions
-                git config --local user.email github-actions@github.com
+                git config --local user.email "github-actions@github.com"
                 ls
                 git status
-                git remote
                 git commit --message "Prepare stage redeploy"
                 git push --set-upstream origin myFeature
             - name: Checkout Repository
