@@ -34,6 +34,8 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
+              with:  
+                token: ${{ secrets.PAT }}
             - name: Merge PR
               run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
