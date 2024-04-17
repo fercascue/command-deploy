@@ -67,4 +67,18 @@ jobs:
                 git config --local user.email github-actions@github.com
                 git commit --message "Prepare stage redeploy"
                 git push origin myFeature
+            - name: Create pull request into develop
+              uses: peter-evans/create-pull-request@v4
+              id: cprdev
+              with:
+                token: ${{ secrets.PAT }}
+                branch: myFeature
+                base: develop
+                title: 'feat: Recreate stage'
+                labels: |
+                    develop
+                    automated pr
+                body: |
+                    Hi!
+                    This PR was created in response workflow running to release.        
             
