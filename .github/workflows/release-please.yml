@@ -45,4 +45,21 @@ jobs:
           contents: read
           pull-requests: write
         steps:  
-          - run: echo test
+          - name: Check out code
+            uses: actions/checkout@v4
+            with:
+              token: ${{ secrets.PAT }} 
+          - name: Create pull request into develop
+            uses: peter-evans/create-pull-request@v4
+            id: cprdev
+            with:
+              token: ${{ secrets.PAT }}
+              branch: main
+              base: develop
+              title: 'feat: main into develop'
+              labels: |
+                    develop
+                    automated pr
+              body: |
+                 Hi!
+                 This PR was created in response workflow running to release.     
