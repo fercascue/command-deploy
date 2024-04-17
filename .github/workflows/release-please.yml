@@ -48,7 +48,8 @@ jobs:
           - name: Check out code
             uses: actions/checkout@v4
             with:
-              token: ${{ secrets.PAT }} 
+              token: ${{ secrets.PAT }}
+              ref: main
           - name: Create pull request into develop
             uses: peter-evans/create-pull-request@v4
             id: cprdev
