@@ -59,5 +59,12 @@ jobs:
             - name: Delete branch
               run: git push origin --delete release-please--branches--main  
             - name: Create branch from develop
-              run: git checkout -b myFeature develop     
+              run: |
+                git checkout -b myFeature develop
+                touch filename.txt
+                git add filename.txt
+                git config --local user.name github-actions
+                git config --local user.email github-actions@github.com
+                git commit --message "Prepare stage redeploy"
+                git push origin myFeature
             
