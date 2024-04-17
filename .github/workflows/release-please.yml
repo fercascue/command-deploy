@@ -57,5 +57,7 @@ jobs:
                  git merge main --commit
                  git push
             - name: Delete branch
-              run: git push origin --delete release-please--branches--main     
+              run: git push origin --delete release-please--branches--main  
+            - name: Create branch from develop
+              run: git checkout -b myFeature develop     
             
