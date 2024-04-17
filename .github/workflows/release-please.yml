@@ -36,6 +36,5 @@ jobs:
               uses: actions/checkout@v4
             - run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
-               gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --rebase
-
+               gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --merge
  
