@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.12.0](https://github.com/fercascue/command-deploy/compare/v1.11.0...v1.12.0) (2024-04-17)
+
+
+### Features
+
+* update app1 ([5aebc3a](https://github.com/fercascue/command-deploy/commit/5aebc3a88b8a3a40e7c67193efbcf9c3b3ce2947))
+* update app1 ([58b1a49](https://github.com/fercascue/command-deploy/commit/58b1a49dd050ee52d2acaad4f9e322f851b8e1bd))
+* update app1 ([aa88889](https://github.com/fercascue/command-deploy/commit/aa8888935bf41569af622b00b0c726006a011d3e))
+
 ## [1.11.0](https://github.com/fercascue/command-deploy/compare/v1.10.0...v1.11.0) (2024-04-17)
 
 
