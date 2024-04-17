@@ -49,14 +49,13 @@ jobs:
             uses: actions/checkout@v4
             with:
               token: ${{ secrets.PAT }}
-              ref: main
+              ref: develop
           - name: Create pull request into develop
             uses: peter-evans/create-pull-request@v4
             id: cprdev
             with:
               token: ${{ secrets.PAT }}
               branch: develop
-              base: main
               title: 'feat: main into develop'
               labels: |
                     develop
