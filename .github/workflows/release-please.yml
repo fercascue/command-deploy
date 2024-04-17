@@ -32,15 +32,19 @@ jobs:
         env:
             GH_TOKEN: ${{ secrets.PAT }}    
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-            - run: | 
+            - name: Merge PR
+              run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
                gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --merge
     develop: 
         needs: release-please
         runs-on: ubuntu-latest
-        if: ${{ needs.release-please.outputs.TARGET_ENV == null }}
+        if: ${{ needs.release-please.outputs.TARGET_ENV == null }}  
         steps:
-              - run: git diff main develop 
-              - run: git diff develop main
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - name: Check diff
+              run: git diff --name-only origin/main origin/develop
+            
