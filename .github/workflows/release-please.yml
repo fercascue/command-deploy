@@ -32,6 +32,8 @@ jobs:
         env:
             GH_TOKEN: ${{ secrets.PAT }}    
         steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
             - name: Merge PR
               run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
