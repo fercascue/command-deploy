@@ -61,6 +61,8 @@ jobs:
             - name: Create branch from develop
               run: |
                 git checkout -b myFeature develop
+                git log --pretty="- %s" > CHANGELOG.md
+                cat CHANGELOG.md
                 touch filename.txt
                 git add filename.txt
                 git config --local user.name github-actions
