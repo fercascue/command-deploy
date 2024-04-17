@@ -22,7 +22,6 @@ jobs:
             # this is a built-in strategy in release-please, see "Action Inputs"
             # for more options
             release-type: maven
-            target-branch: develop	
     triage: 
         needs: release-please
         runs-on: ubuntu-latest
@@ -38,5 +37,27 @@ jobs:
             - run: | 
                echo ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number }}     
                gh pr merge ${{ fromJson(needs.release-please.outputs.TARGET_ENV).number}} --auto --merge
-
+    create-pull-request: 
+        needs: release-please
+        runs-on: ubuntu-latest
+        if: ${{ needs.release-please.outputs.TARGET_ENV == null }}
+        permissions:
+            contents: read
+            pull-requests: write
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+            - name: Create pull request into develop
+              uses: peter-evans/create-pull-request@v4
+              with:
+                token: ${{ secrets.PAT }}
+                branch: main
+                base: develop
+                title: 'feat: main into develop'
+                labels: |
+                    develop
+                    automated pr
+                body: |
+                   Hi!
+                   This PR was created in response workflow running to release.
  
