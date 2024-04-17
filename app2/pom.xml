@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>foo.bar.example</groupId>
     <artifactId>app2</artifactId>
-    <version>1.50.1-SNAPSHOT</version>
+    <version>1.51.0</version>
     <packaging>jar</packaging>
     <name>App2</name>
     <properties>
