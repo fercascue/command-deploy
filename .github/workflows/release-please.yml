@@ -69,7 +69,7 @@ jobs:
                git config user.email noreply@github.com            
             - name: Create branch from develop
               run: |
-                git fetch --all
+                git pull
                 git checkout -b myFeature develop
             - name: Script     
               run: |
