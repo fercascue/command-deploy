@@ -62,13 +62,14 @@ jobs:
               run: |
                 git checkout develop
                 git checkout -b myFeature develop
-                git log --pretty="- %s" > CHANGELOG.md
-                cat CHANGELOG.md
-                git add CHANGELOG.txt
+                touch filename.txt
+                git log --pretty="- %s" > filename.txt
+                cat filename.txt
+                git add filename.txt
                 git config --local user.name github-actions
                 git config --local user.email github-actions@github.com
                 git commit --message "Prepare stage redeploy"
-                git push origin myFeature
+                git push
             - name: Checkout Repository
               uses: actions/checkout@v4
               with:
