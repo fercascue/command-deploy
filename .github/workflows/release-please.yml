@@ -69,7 +69,7 @@ jobs:
                 git config --local user.name github-actions
                 git config --local user.email github-actions@github.com
                 git commit --message "Prepare stage redeploy"
-                git push
+                git push --set-upstream origin myFeature
             - name: Checkout Repository
               uses: actions/checkout@v4
               with:
