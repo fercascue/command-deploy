@@ -74,9 +74,8 @@ jobs:
             uses: peter-evans/create-pull-request@v4
             id: cprdev
             with:
-              token: ${{ secrets.PAT }}
-              branch: feature/relay
-              base: develop
+              branch: origin/feature/relay 
+              base: origin/develop
               title: 'feat: recreate stage'
               labels: |
                   develop
