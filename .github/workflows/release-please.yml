@@ -51,9 +51,9 @@ jobs:
                 fetch-depth: 0
             - name: Check diff
               run: git diff --name-only origin/main origin/develop
-            - name: Create branch from develop
+            - name: Create branch from main
               run: |
-                git checkout -b feature/myFeature develop
+                git checkout -b feature/myFeature origin/main
                 touch filename.txt
                 git log --pretty="- %s" > filename.txt
                 cat filename.txt
