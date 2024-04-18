@@ -51,16 +51,8 @@ jobs:
                 fetch-depth: 0
             - name: Check diff
               run: git diff --name-only origin/main origin/develop
-            - name: Merge  
-              run: |
-                 git checkout develop
-                 git merge main --commit
-                 git push
-            - name: Delete branch
-              run: git push origin --delete release-please--branches--main  
             - name: Create branch from develop
               run: |
-                git checkout develop
                 git checkout -b feature/myFeature develop
                 touch filename.txt
                 git log --pretty="- %s" > filename.txt
@@ -70,7 +62,7 @@ jobs:
                 git config --local user.email "github-actions@github.com"
                 git commit --message "Prepare stage redeploy"
                 git push --set-upstream origin feature/myFeature
-              shell: bash  
+              shell: bash
             - name: Create pull request into develop
               uses: peter-evans/create-pull-request@v4
               id: cprdev
@@ -84,5 +76,15 @@ jobs:
                     automated pr
                 body: |
                     Hi!
-                    This PR was created in response workflow running to release.        
+                    This PR was created in response workflow running to release.
+
+
+            - name: Merge  
+              run: |
+                 git checkout develop
+                 git merge main --commit
+                 git push
+            - name: Delete branch
+              run: git push origin --delete release-please--branches--main  
+                    
             
