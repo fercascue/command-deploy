@@ -72,6 +72,7 @@ jobs:
             uses: peter-evans/create-or-update-comment@v2
             id: create-comment
             with:
+              token: ${{ secrets.PAT}}
               issue-number:  ${{ steps.cprdev.outputs.pull-request-number }}
               body: |
                   .deploy staging
