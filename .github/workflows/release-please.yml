@@ -58,8 +58,6 @@ jobs:
             run: git status   
           - name: Create release branch
             run: git checkout -b feature/relay
-          - name: Check diff
-            run: git diff --name-only feature/relay origin/develop
           - name: Script
             run: |
                git log --pretty="- %s" > CHANGELOG.md
@@ -73,6 +71,8 @@ jobs:
               git config --local user.email github-actions@github.com
               git commit --message "Prepare relay merge"
               git push origin feature/relay
+          - name: Check branches
+            run: git branch -a
           - name: Create pull request into develop
             uses: peter-evans/create-pull-request@v4
             id: cprdev
