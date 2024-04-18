@@ -68,5 +68,12 @@ jobs:
             if: ${{ steps.cprdev.outputs.pull-request-number }}
             run: |
                echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
+          - name: Create pr comment for lint 
+            uses: peter-evans/create-or-update-comment@v2
+            id: create-comment
+            with:
+              issue-number:  ${{ steps.cprdev.outputs.pull-request-number }}
+              body: |
+                  .deploy staging
           - name: Delete branch
             run: git push origin --delete release-please--branches--main      
