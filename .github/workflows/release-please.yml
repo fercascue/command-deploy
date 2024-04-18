@@ -58,19 +58,8 @@ jobs:
             run: git status   
           - name: Create release branch
             run: git checkout -b feature/relay
-          - name: Script
-            run: |
-               git log --pretty="- %s" > CHANGELOG.md
-               cat CHANGELOG.md
-         
-          - name: Commit changes
-            run: |
-              touch filename.txt
-              git add filename.txt
-              git config --local user.name github-actions
-              git config --local user.email github-actions@github.com
-              git commit --message "Prepare relay merge"
-              git push origin feature/relay
+          - name: Check diff
+            run: git diff --name-only origin/main origin/develop 
           - name: Check branches
             run: git branch -a
           - name: Create pull request into develop
