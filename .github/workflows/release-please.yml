@@ -59,7 +59,7 @@ jobs:
             uses: peter-evans/create-pull-request@v4
             with:
               token: ${{ secrets.PAT}}
-              branch: production-promotion  
+              branch: feat/promotion  
               title: 'feat: recreate stage'
               labels: |
                   develop
