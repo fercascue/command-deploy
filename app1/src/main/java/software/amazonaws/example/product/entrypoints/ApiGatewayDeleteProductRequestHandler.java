@@ -21,7 +21,7 @@ public class ApiGatewayDeleteProductRequestHandler implements RequestHandler<API
     private static final Logger logger = LoggerFactory.getLogger(ApiGatewayDeleteProductRequestHandler.class);
     private final ProductStore productStore = new DynamoDbProductStore();
 
-    //REVIEW - 97
+    //REVIEW - 98
     @Override
     public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
         String id = event.getPathParameters().get("id");
