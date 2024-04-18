@@ -149,7 +149,7 @@
 
     <profiles>
         <profile>
-            <id>native-image</id>
+            <id>native</id>
             <build>
                 <plugins>
                     <plugin>
