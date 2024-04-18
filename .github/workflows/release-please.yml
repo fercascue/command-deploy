@@ -54,8 +54,12 @@ jobs:
             run: |
              git config user.name "GitHub Actions"
              git config user.email noreply@github.com  
+          - name: Status
+            run: git status   
           - name: Create release branch
             run: git checkout -b feature/relay
+          - name: Check diff
+            run: git diff --name-only feature/relay origin/develop
           - name: Script
             run: |
                git log --pretty="- %s" > CHANGELOG.md
@@ -76,7 +80,7 @@ jobs:
               token: ${{ secrets.PAT }}
               branch: feature/relay
               base: develop
-              title: 'feat: Into develop'
+              title: 'feat: recreate stage'
               labels: |
                   develop
                   automated pr
@@ -87,3 +91,5 @@ jobs:
             if: ${{ steps.cprdev.outputs.pull-request-number }}
             run: |
                echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
+          - name: Delete branch
+            run: git push origin --delete release-please--branches--main      
