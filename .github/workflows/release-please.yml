@@ -43,46 +43,33 @@ jobs:
     develop: 
         needs: release-please
         runs-on: ubuntu-latest
-        if: ${{ needs.release-please.outputs.TARGET_ENV == null }}  
+        if: ${{ needs.release-please.outputs.TARGET_ENV == null }} 
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}  
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 0
-            - name: Check diff
-              run: git diff --name-only origin/main origin/develop
-            - name: Merge  
-              run: |
-                 git checkout develop
-                 git merge main --commit
-                 git push
-            - name: Delete branch
-              run: git push origin --delete release-please--branches--main  
-            - name: Create branch from develop
-              run: |
-                git checkout develop
-                git checkout -b feature/myFeature develop
-                touch filename.txt
-                git log --pretty="- %s" > filename.txt
-                cat filename.txt
-                git add filename.txt
-                git config --local user.name "github-actions"
-                git config --local user.email "github-actions@github.com"
-                git commit --message "Prepare stage redeploy"
-                git push --set-upstream origin feature/myFeature
-              shell: bash  
-            - name: Create pull request into develop
-              uses: peter-evans/create-pull-request@v4
-              id: cprdev
-              with:
-                token: ${{ secrets.PAT }}
-                branch: feature/myFeature
-                base: develop
-                title: 'feat: Recreate stage'
-                labels: |
-                    develop
-                    automated pr
-                body: |
-                    Hi!
-                    This PR was created in response workflow running to release.        
-            
+          - uses: actions/checkout@v4
+            with:
+              ref: develop
+          - name: Reset promotion branch
+            run: |
+              git fetch origin main:main
+              git reset --hard main
+          - name: Create Pull Request
+            id: cprdev
+            uses: peter-evans/create-pull-request@v4
+            with:
+              branch: production-promotion  
+              title: 'feat: recreate stage'
+              labels: |
+                  develop
+                  automated pr
+              body: |
+                 Hi!
+                 This PR was created in response workflow running to release.
+          - name: Check outputs
+            if: ${{ steps.cprdev.outputs.pull-request-number }}
+            run: |
+               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
+               gh pr merge ${{ steps.cprdev.outputs.pull-request-number }} --auto --merge
+          - name: Delete branch
+            run: git push origin --delete release-please--branches--main      
