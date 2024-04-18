@@ -45,46 +45,45 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ needs.release-please.outputs.TARGET_ENV == null }}  
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-              with:
-                fetch-depth: 0
-            - name: Check diff
-              run: git diff --name-only origin/main origin/develop
-            - name: Create branch from main
-              run: |
-                git checkout -b feature/myFeature origin/main
-                touch filename.txt
-                git log --pretty="- %s" > filename.txt
-                cat filename.txt
-                git add filename.txt
-                git config --local user.name "github-actions"
-                git config --local user.email "github-actions@github.com"
-                git commit --message "Prepare stage redeploy"
-                git push --set-upstream origin feature/myFeature
-              shell: bash
-            - name: Create pull request into develop
-              uses: peter-evans/create-pull-request@v4
-              id: cprdev
-              with:
-                token: ${{ secrets.PAT }}
-                branch: feature/myFeature
-                base: develop
-                title: 'feat: Recreate stage'
-                labels: |
-                    develop
-                    automated pr
-                body: |
-                    Hi!
-                    This PR was created in response workflow running to release.
-
-
-            - name: Merge  
-              run: |
-                 git checkout develop
-                 git merge main --commit
-                 git push
-            - name: Delete branch
-              run: git push origin --delete release-please--branches--main  
-                    
-            
+          - name: Check out code
+            uses: actions/checkout@v4
+            with:
+              #fetch-depth: 0
+              token: ${{ secrets.PAT }} 
+          - name: Initialize mandatory git config
+            run: |
+             git config user.name "GitHub Actions"
+             git config user.email noreply@github.com  
+          - name: Create release branch
+            run: git checkout -b feature/relay
+          - name: Script
+            run: |
+               git log --pretty="- %s" > CHANGELOG.md
+               cat CHANGELOG.md
+         
+          - name: Commit changes
+            run: |
+              touch filename.txt
+              git add filename.txt
+              git config --local user.name github-actions
+              git config --local user.email github-actions@github.com
+              git commit --message "Prepare relay merge"
+              git push origin feature/relay
+          - name: Create pull request into develop
+            uses: peter-evans/create-pull-request@v4
+            id: cprdev
+            with:
+              token: ${{ secrets.PAT }}
+              branch: feature/relay
+              base: develop
+              title: 'feat: Into develop'
+              labels: |
+                  develop
+                  automated pr
+              body: |
+                 Hi!
+                 This PR was created in response workflow running to release.
+          - name: Check outputs
+            if: ${{ steps.cprdev.outputs.pull-request-number }}
+            run: |
+               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
