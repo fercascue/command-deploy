@@ -59,7 +59,7 @@ jobs:
           - name: Create release branch
             run: git checkout -b feature/relay
           - name: Check diff
-            run: git diff --name-only origin/main origin/develop 
+            run: git diff --name-only feature/relay origin/develop 
           - name: Check branches
             run: git branch -a
           - name: Create pull request into develop
