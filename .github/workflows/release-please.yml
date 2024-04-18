@@ -61,10 +61,9 @@ jobs:
               git checkout -b feature/relay
               git config --local user.name github-actions
               git config --local user.email github-actions@github.com
-              git commit --message "Prepare relay merge"
-              git push origin feature/relay
+              git push -u origin feature/relay
           - name: Check diff
-            run: git diff --name-only feature/relay origin/develop 
+            run: git diff --name-only origin/feature/relay origin/develop 
           - name: Check branches
             run: git branch -a
           - name: Create pull request into develop
