@@ -72,4 +72,6 @@ jobs:
                echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
                gh pr merge ${{ steps.cprdev.outputs.pull-request-number }} --auto --merge
           - name: Delete branch
-            run: git push origin --delete release-please--branches--main      
+            run: |
+              git push origin --delete release-please--branches--main
+              git push origin --delete production-promotion              
