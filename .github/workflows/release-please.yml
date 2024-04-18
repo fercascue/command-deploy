@@ -57,7 +57,12 @@ jobs:
           - name: Status
             run: git status   
           - name: Create release branch
-            run: git checkout -b feature/relay
+            run: |
+              git checkout -b feature/relay
+              git config --local user.name github-actions
+              git config --local user.email github-actions@github.com
+              git commit --message "Prepare relay merge"
+              git push origin feature/relay
           - name: Check diff
             run: git diff --name-only feature/relay origin/develop 
           - name: Check branches
