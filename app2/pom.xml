@@ -188,7 +188,7 @@
                                     <goal>single</goal>
                                 </goals>
                                 <configuration>
-                                    <finalName>function</finalName>
+                                    <finalName>${project.artifactId}</finalName>
                                     <descriptors>
                                         <descriptor>src/assembly/zip.xml</descriptor>
                                     </descriptors>
