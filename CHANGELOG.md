@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.73.0](https://github.com/fercascue/command-deploy/compare/v1.72.0...v1.73.0) (2024-04-18)
+
+
+### Features
+
+* update app1 ([9940d0a](https://github.com/fercascue/command-deploy/commit/9940d0a8b041044d4fbf489791ac9ef9891c4ebd))
+
 ## [1.72.0](https://github.com/fercascue/command-deploy/compare/v1.71.0...v1.72.0) (2024-04-18)
 
 
