@@ -59,7 +59,7 @@ jobs:
             uses: peter-evans/create-pull-request@v4
             with:
               token: ${{ secrets.PAT}}
-              branch: feat/promotion  
+              branch: feature/promotion  
               title: 'feat: recreate stage'
               labels: |
                   develop
@@ -82,4 +82,4 @@ jobs:
               body: |
                 .deploy staging
           - name: Delete branch
-            run: git push origin --delete release-please--branches--main               
+            run: git push origin --delete release-please--branches--main
