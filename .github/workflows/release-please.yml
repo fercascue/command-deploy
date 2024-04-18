@@ -66,13 +66,17 @@ jobs:
             run: git diff --name-only origin/feature/relay origin/develop 
           - name: Check branches
             run: git branch -a
+          - name: Check out code
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0  
           - name: Create pull request into develop
             uses: peter-evans/create-pull-request@v4
             id: cprdev
             with:
               token: ${{ secrets.PAT }}
               branch: remotes/origin/feature/relay
-              base: remotes/origin/develop
+              base: origin/develop
               title: 'feat: recreate stage'
               labels: |
                   develop
