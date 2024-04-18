@@ -75,7 +75,7 @@ jobs:
             id: cprdev
             with:
               token: ${{ secrets.PAT }}
-              branch: remotes/origin/feature/relay
+              branch: feature/relay
               base: develop
               title: 'feat: recreate stage'
               labels: |
