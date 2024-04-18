@@ -76,7 +76,7 @@ jobs:
             with:
               token: ${{ secrets.PAT }}
               branch: remotes/origin/feature/relay
-              base: origin/develop
+              base: develop
               title: 'feat: recreate stage'
               labels: |
                   develop
