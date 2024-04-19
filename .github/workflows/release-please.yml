@@ -72,7 +72,7 @@ jobs:
             run: |
               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
           - name: Query checks 
-            run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} --watch --required
+            run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} 
           - name: Create pr comment for lint 
             uses: peter-evans/create-or-update-comment@v2
             id: create-comment
