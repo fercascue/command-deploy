@@ -30,7 +30,7 @@ jobs:
           environment_targets: "development,staging" 
           stable_branch: "main"
           checks: "all"
-          update_branch: "disabled"
+          #update_branch: "disabled"
 
       # Run your deployment logic for your project here - examples seen below
 

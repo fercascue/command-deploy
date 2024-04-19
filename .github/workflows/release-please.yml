@@ -80,13 +80,13 @@ jobs:
               issue-number:  ${{ steps.cprdev.outputs.pull-request-number }}
               body: |
                 .deploy staging    
-          - name: Delete branch
-            run: |
-               git push origin --delete release-please--branches--main
-               
           - name: DIFF
             run:  |
                git fetch origin develop
                gh pr merge ${{ steps.cprdev.outputs.pull-request-number}} --auto --merge
             env:
                 GH_TOKEN: ${{ secrets.PAT }}
+          - name: Delete branches
+            run: |
+              git push origin --delete release-please--branches--main      
+              git push origin --deletefeature/promotion
