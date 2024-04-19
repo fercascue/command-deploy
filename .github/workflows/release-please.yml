@@ -44,8 +44,8 @@ jobs:
         needs: release-please
         runs-on: ubuntu-latest
         if: ${{ needs.release-please.outputs.TARGET_ENV == null }} 
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}  
+        #env:
+          #GH_TOKEN: ${{ secrets.PAT }}  
         steps:
           - uses: actions/checkout@v4
             with:
@@ -58,7 +58,7 @@ jobs:
             id: cprdev
             uses: peter-evans/create-pull-request@v4
             with:
-              token: ${{ secrets.PAT}}
+              #token: ${{ secrets.PAT}}
               branch: feature/promotion  
               title: 'feat: recreate stage'
               labels: |
