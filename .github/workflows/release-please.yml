@@ -81,4 +81,10 @@ jobs:
               body: |
                 .deploy staging    
           - name: Delete branch
-            run: git push origin --delete release-please--branches--main
+            run: |
+               git push origin --delete release-please--branches--main
+               git push origin --delete feature/promotion 
+          - name: Merge PR
+            run:  gh pr merge ${{ steps.cprdev.outputs.pull-request-number}} --auto --merge
+            env:
+              GH_TOKEN: ${{ secrets.PAT }}
