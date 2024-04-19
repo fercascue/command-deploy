@@ -58,7 +58,7 @@ jobs:
             id: cprdev
             uses: peter-evans/create-pull-request@v4
             with:
-              #token: ${{ secrets.PAT}}
+              token: ${{ secrets.PAT}}
               branch: feature/promotion  
               title: 'feat: recreate stage'
               labels: |
