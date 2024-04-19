@@ -29,7 +29,7 @@ jobs:
           environment: development # the default environment
           environment_targets: "development,staging" 
           stable_branch: "main"
-          #checks: "all"
+          checks: "all"
 
       # Run your deployment logic for your project here - examples seen below
 
