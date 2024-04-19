@@ -44,8 +44,8 @@ jobs:
         needs: release-please
         runs-on: ubuntu-latest
         if: ${{ needs.release-please.outputs.TARGET_ENV == null }} 
-        #env:
-          #GH_TOKEN: ${{ secrets.PAT }}  
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}  
         steps:
           - uses: actions/checkout@v4
             with:
@@ -61,7 +61,6 @@ jobs:
               token: ${{ secrets.PAT}}
               branch: feature/promotion  
               title: 'feat: recreate stage'
-              commit-message: skip-checks
               labels: |
                   develop
                   automated pr
@@ -72,10 +71,6 @@ jobs:
             if: ${{ steps.cprdev.outputs.pull-request-number }}
             run: |
               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
-          - name: Query checks 
-            run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} --watch
-            env:
-              GH_TOKEN: ${{ secrets.PAT}}
           - name: Create pr comment for lint 
             uses: peter-evans/create-or-update-comment@v2
             id: create-comment
