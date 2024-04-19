@@ -72,7 +72,7 @@ jobs:
             run: |
               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
           - name: Query checks 
-            run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} 
+            run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} --watch
             env:
               GH_TOKEN: ${{ secrets.PAT}}
           - name: Create pr comment for lint 
