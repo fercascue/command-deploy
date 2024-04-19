@@ -24,6 +24,7 @@ jobs:
        uses: actions/dependency-review-action@v4
    greeting:
       name: First step interaction
+      needs: dependency-review
       runs-on: ubuntu-latest
       steps:
         - uses: actions/first-interaction@v1
@@ -34,6 +35,7 @@ jobs:
 
    lint-pull-request:
       name: Validate pull request format
+      needs: greeting
       runs-on: ubuntu-latest
       steps:
          - name: Checkout code from repository
@@ -74,10 +76,10 @@ jobs:
                pull-request-number: ${{ github.event.pull_request.number }}
                review-message: "Auto approved automated PR"
    title:
-      name: Auto approve pull request
+      name: PR Info
+      needs: auto-approve
       runs-on: ubuntu-latest
       steps:
         - name : Print Title of PR
           run: echo The Title of your PR is ${{ github.event.pull_request.title }}
-        - name : Print Body of PR
-          run: echo The Title of your PR is ${{ github.event.pull_request.body }}  
+      
