@@ -89,4 +89,3 @@ jobs:
           - name: Delete branches
             run: |
               git push origin --delete release-please--branches--main      
-              git push origin --delete feature/promotion
