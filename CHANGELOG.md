@@ -1,5 +1,217 @@
 # Changelog
 
+## [1.86.29](https://github.com/fercascue/command-deploy/compare/v1.86.28...v1.86.29) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([7d4e546](https://github.com/fercascue/command-deploy/commit/7d4e5464800614162e37473549d392774b545459))
+
+## [1.86.28](https://github.com/fercascue/command-deploy/compare/v1.86.27...v1.86.28) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([3f827a0](https://github.com/fercascue/command-deploy/commit/3f827a08b5ffaeb8f9e5f2936b8923e6a4c1c7d0))
+
+## [1.86.27](https://github.com/fercascue/command-deploy/compare/v1.86.26...v1.86.27) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([6a1b2c3](https://github.com/fercascue/command-deploy/commit/6a1b2c335d485b08d779d6ebd8c7af6814eb9ab1))
+
+## [1.86.26](https://github.com/fercascue/command-deploy/compare/v1.86.25...v1.86.26) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([2eb6ee2](https://github.com/fercascue/command-deploy/commit/2eb6ee23b318eff7c6be5595ef9003c33750e728))
+
+## [1.86.25](https://github.com/fercascue/command-deploy/compare/v1.86.24...v1.86.25) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([9a22558](https://github.com/fercascue/command-deploy/commit/9a225580cb8faf30c26a3cfc79b23d469892745b))
+
+## [1.86.24](https://github.com/fercascue/command-deploy/compare/v1.86.23...v1.86.24) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([3cb5115](https://github.com/fercascue/command-deploy/commit/3cb5115adf5a836a237f3ccc52464c6aba0dcd65))
+
+## [1.86.23](https://github.com/fercascue/command-deploy/compare/v1.86.22...v1.86.23) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([2f27183](https://github.com/fercascue/command-deploy/commit/2f2718310a4ef66b9c409499ec997788c4fafc18))
+
+## [1.86.22](https://github.com/fercascue/command-deploy/compare/v1.86.21...v1.86.22) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([8922156](https://github.com/fercascue/command-deploy/commit/892215672efb01d9baccf6bb9f28510f9c40d0a3))
+* update app1 ([6955e77](https://github.com/fercascue/command-deploy/commit/6955e7719a3db47ce4e7e4cda4ea2656d9073715))
+
+## [1.86.21](https://github.com/fercascue/command-deploy/compare/v1.86.20...v1.86.21) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([47d8bb4](https://github.com/fercascue/command-deploy/commit/47d8bb48211e0e4c9243bacb3e38f31da1ed5156))
+
+## [1.86.20](https://github.com/fercascue/command-deploy/compare/v1.86.19...v1.86.20) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([edf77b8](https://github.com/fercascue/command-deploy/commit/edf77b88fe42a1ec1860710fcc4f9f0beb3f22ad))
+
+## [1.86.19](https://github.com/fercascue/command-deploy/compare/v1.86.18...v1.86.19) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([9a5eceb](https://github.com/fercascue/command-deploy/commit/9a5ecebe4ee023230ac6ed77e8eb9fd470e5cf31))
+
+## [1.86.18](https://github.com/fercascue/command-deploy/compare/v1.86.17...v1.86.18) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([ef1fa3a](https://github.com/fercascue/command-deploy/commit/ef1fa3ae03420d81090491baa344f06cfdbd87f4))
+
+## [1.86.17](https://github.com/fercascue/command-deploy/compare/v1.86.16...v1.86.17) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([51611e2](https://github.com/fercascue/command-deploy/commit/51611e2dcff8c42570221a58d71367516133bbc2))
+
+## [1.86.16](https://github.com/fercascue/command-deploy/compare/v1.86.15...v1.86.16) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([b249e19](https://github.com/fercascue/command-deploy/commit/b249e19c9ec2cdf4abe702f8296561d06bd5609f))
+
+## [1.86.15](https://github.com/fercascue/command-deploy/compare/v1.86.14...v1.86.15) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([e3b5884](https://github.com/fercascue/command-deploy/commit/e3b58842ee1254aef7a3f8b55813907e395ed628))
+
+## [1.86.14](https://github.com/fercascue/command-deploy/compare/v1.86.13...v1.86.14) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([7eaf298](https://github.com/fercascue/command-deploy/commit/7eaf29846a985a5f66a230af52a218c534951f96))
+
+## [1.86.13](https://github.com/fercascue/command-deploy/compare/v1.86.12...v1.86.13) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([95d7033](https://github.com/fercascue/command-deploy/commit/95d703311da90aa9995c85851adddc0e8b6dbc29))
+
+## [1.86.12](https://github.com/fercascue/command-deploy/compare/v1.86.11...v1.86.12) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([8e06b9c](https://github.com/fercascue/command-deploy/commit/8e06b9c68e4ee1d7154dd102a8964dd00f49b74a))
+
+## [1.86.11](https://github.com/fercascue/command-deploy/compare/v1.86.10...v1.86.11) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([0760dcd](https://github.com/fercascue/command-deploy/commit/0760dcd587c4f0d6840fbd16cbce7c2dbe93fd3f))
+
+## [1.86.10](https://github.com/fercascue/command-deploy/compare/v1.86.9...v1.86.10) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([ed57b25](https://github.com/fercascue/command-deploy/commit/ed57b252aa9b56fc1bc5d56b37d8fd4661911ba1))
+
+## [1.86.9](https://github.com/fercascue/command-deploy/compare/v1.86.8...v1.86.9) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([28efbaa](https://github.com/fercascue/command-deploy/commit/28efbaa779ef62ccf5c17ad7b912a169b657a395))
+
+## [1.86.8](https://github.com/fercascue/command-deploy/compare/v1.86.7...v1.86.8) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([efd690d](https://github.com/fercascue/command-deploy/commit/efd690d8419e65595c0e8ab14220b5faeaf6d0e0))
+* update app1 ([3a8d20c](https://github.com/fercascue/command-deploy/commit/3a8d20c5ec5707a31b410048502b6ec1adc468fb))
+
+## [1.86.7](https://github.com/fercascue/command-deploy/compare/v1.86.6...v1.86.7) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([269fd21](https://github.com/fercascue/command-deploy/commit/269fd216e5d329761cfc66f768e57479f4a47734))
+
+## [1.86.6](https://github.com/fercascue/command-deploy/compare/v1.86.5...v1.86.6) (2024-04-19)
+
+
+### Bug Fixes
+
+* update app1 ([b5cb674](https://github.com/fercascue/command-deploy/commit/b5cb6749333e5b1fd20c52554bc9fed7bcc5eb8c))
+
+## [1.86.5](https://github.com/fercascue/command-deploy/compare/v1.86.4...v1.86.5) (2024-04-18)
+
+
+### Bug Fixes
+
+* update app1 ([1b09d2f](https://github.com/fercascue/command-deploy/commit/1b09d2f0fba7ddd30df2dec959e32292a560491b))
+
+## [1.86.4](https://github.com/fercascue/command-deploy/compare/v1.86.3...v1.86.4) (2024-04-18)
+
+
+### Bug Fixes
+
+* update app1 ([c67b326](https://github.com/fercascue/command-deploy/commit/c67b326746f510d58cff230bf4a0d7502ecee363))
+
+## [1.86.3](https://github.com/fercascue/command-deploy/compare/v1.86.2...v1.86.3) (2024-04-18)
+
+
+### Bug Fixes
+
+* update app1 ([7e1dda5](https://github.com/fercascue/command-deploy/commit/7e1dda5bcc5196658bddb7c56c3f687fd0007eb0))
+
+## [1.86.2](https://github.com/fercascue/command-deploy/compare/v1.86.1...v1.86.2) (2024-04-18)
+
+
+### Bug Fixes
+
+* update app1 ([0cf7d2f](https://github.com/fercascue/command-deploy/commit/0cf7d2fe8c63937bc331d4840e020d25b82a8453))
+
+## [1.86.1](https://github.com/fercascue/command-deploy/compare/v1.86.0...v1.86.1) (2024-04-18)
+
+
+### Bug Fixes
+
+* update app1 ([6ec246d](https://github.com/fercascue/command-deploy/commit/6ec246d9289e29a06f220cb2a8989fb50801af22))
+
+## [1.86.0](https://github.com/fercascue/command-deploy/compare/v1.85.0...v1.86.0) (2024-04-18)
+
+
+### Features
+
+* update app1 ([dd57e2f](https://github.com/fercascue/command-deploy/commit/dd57e2f17476d39406b30ab14fee58dddfd96334))
+
 ## [1.85.0](https://github.com/fercascue/command-deploy/compare/v1.84.0...v1.85.0) (2024-04-18)
 
 

@@ -44,8 +44,8 @@ jobs:
         needs: release-please
         runs-on: ubuntu-latest
         if: ${{ needs.release-please.outputs.TARGET_ENV == null }} 
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}  
+        #env:
+          #GH_TOKEN: ${{ secrets.PAT }}  
         steps:
           - uses: actions/checkout@v4
             with:
@@ -58,20 +58,35 @@ jobs:
             id: cprdev
             uses: peter-evans/create-pull-request@v4
             with:
-              branch: production-promotion  
+              #token: ${{ secrets.PAT}}
+              branch: feature/promotion  
               title: 'feat: recreate stage'
               labels: |
                   develop
                   automated pr
               body: |
                  Hi!
+                 
                  This PR was created in response workflow running to release.
           - name: Check outputs
             if: ${{ steps.cprdev.outputs.pull-request-number }}
             run: |
-               echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
-               gh pr merge ${{ steps.cprdev.outputs.pull-request-number }} --auto --merge
+              echo "Pull Request Number - ${{ steps.cprdev.outputs.pull-request-number }}"
+          - name: Create pr comment for lint 
+            uses: peter-evans/create-or-update-comment@v2
+            id: create-comment
+            with:
+              token: ${{ secrets.PAT}}
+              issue-number:  ${{ steps.cprdev.outputs.pull-request-number }}
+              body: |
+                .deploy staging    
           - name: Delete branch
             run: |
-              git push origin --delete release-please--branches--main
-              git push origin --delete production-promotion              
+               git push origin --delete release-please--branches--main
+               
+          - name: DIFF
+            run:  |
+               git fetch origin develop
+               gh pr merge ${{ steps.cprdev.outputs.pull-request-number}} --auto --merge
+            env:
+                GH_TOKEN: ${{ secrets.PAT }}
