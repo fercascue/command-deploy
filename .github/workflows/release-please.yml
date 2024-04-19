@@ -61,6 +61,7 @@ jobs:
               token: ${{ secrets.PAT}}
               branch: feature/promotion  
               title: 'feat: recreate stage'
+              commit-message: skip-checks
               labels: |
                   develop
                   automated pr
