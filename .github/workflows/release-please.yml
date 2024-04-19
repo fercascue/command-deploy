@@ -74,7 +74,7 @@ jobs:
           - name: Query checks 
             run: gh pr checks ${{ steps.cprdev.outputs.pull-request-number }} 
             env:
-              GH_TOKEN: ${{ github.token }}
+              GH_TOKEN: ${{ secrets.PAT}}
           - name: Create pr comment for lint 
             uses: peter-evans/create-or-update-comment@v2
             id: create-comment
