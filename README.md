@@ -1,5 +1,6 @@
 [![Feature Worflow](https://github.com/fercascue/command-deploy/actions/workflows/feature-workflow.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/feature-workflow.yml)
 
+[![Build artifact](https://github.com/fercascue/command-deploy/actions/workflows/artifact-build.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/artifact-build.yml)
 
 # Getting Started with Create React App using reusable workflow
 
