@@ -17,6 +17,8 @@ jobs:
   demo:
     if: ${{ github.event.issue.pull_request }} # only run on pull request comments
     runs-on: ubuntu-latest
+    outputs:
+      file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
     steps:
       # Execute IssueOps branch deployment logic, hooray!
       # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
@@ -49,4 +51,21 @@ jobs:
       # conditionally run a regular deployment
       - name: fake regular deploy
         if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop != 'true' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+      - name: Detecting changes in base folder
+        id: changed-files-dir-names
+        uses: tj-actions/changed-files@v35.6.4
+        with:
+          dir_names: true
+          dir_names_max_depth: 0
+          json: true
+          json_raw_format: true
+          files_ignore: |
+                  .github
+          dir_names_exclude_root: false
+      - name: List all changed files
+        run: echo ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+      - name: Output
         run: echo "I am doing a fake regular deploy"
