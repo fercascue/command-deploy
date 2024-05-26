@@ -12,7 +12,6 @@ jobs:
          with:
            version: '22.2.0' # GraalVM version
            java-version: '11'
-           components: 'native-image'
            github-token: ${{ secrets.GITHUB_TOKEN }}
 
     activate-workflow-base: 
