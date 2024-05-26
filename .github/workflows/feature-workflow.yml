@@ -10,7 +10,7 @@ jobs:
        - uses: actions/checkout@v4
        - uses: graalvm/setup-graalvm@v1
          with:
-           version: '22.3.2' # GraalVM version
+           version: '22.2.0' # GraalVM version
            java-version: '11'
            components: 'native-image'
            github-token: ${{ secrets.GITHUB_TOKEN }}
