@@ -4,6 +4,8 @@
 
 [![release-please](https://github.com/fercascue/command-deploy/actions/workflows/release-please.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/release-please.yml)
 
+[![command demo](https://github.com/fercascue/command-deploy/actions/workflows/command.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/command.yml)
+
 # Getting Started with Create React App using reusable workflow
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
