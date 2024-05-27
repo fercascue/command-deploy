@@ -4,16 +4,6 @@ on:
     branches:
       - "feature/*"
 jobs:
-    build:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v4
-       - uses: graalvm/setup-graalvm@v1
-         with:
-           version: '22.2.0' # GraalVM version
-           java-version: '11'
-           github-token: ${{ secrets.GITHUB_TOKEN }}
-
     activate-workflow-base: 
         name: Detect changes in base project
         runs-on: ubuntu-latest
