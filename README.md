@@ -1,3 +1,9 @@
+[![Feature Worflow](https://github.com/fercascue/command-deploy/actions/workflows/feature-workflow.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/feature-workflow.yml)
+
+[![Build artifact](https://github.com/fercascue/command-deploy/actions/workflows/artifact-build.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/artifact-build.yml)
+
+[![release-please](https://github.com/fercascue/command-deploy/actions/workflows/release-please.yml/badge.svg)](https://github.com/fercascue/command-deploy/actions/workflows/release-please.yml)
+
 # Getting Started with Create React App using reusable workflow
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
