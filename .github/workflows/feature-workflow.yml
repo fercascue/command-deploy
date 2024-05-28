@@ -2,7 +2,7 @@ name: Feature Worflow
 on:
   push:
     branches:
-      - "feature/*"
+      - "XXXX/*"
 jobs:
     activate-workflow-base: 
         name: Detect changes in base project
