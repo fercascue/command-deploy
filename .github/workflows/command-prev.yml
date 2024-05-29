@@ -34,7 +34,7 @@ jobs:
           reaction: "eyes"
           environment: development # the default environment
           environment_targets: "development,staging" 
-          stable_branch: "main"
+          stable_branch: "develop"
           checks: "all"
           update_branch: "disabled"
 
