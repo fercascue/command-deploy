@@ -33,7 +33,7 @@ jobs:
           noop_trigger: ".noop"
           reaction: "eyes"
           environment: development # the default environment
-          environment_targets: "development,staging" 
+          environment_targets: "production" 
           stable_branch: "main"
           checks: "all"
           update_branch: "disabled"
