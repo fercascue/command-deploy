@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   demo:
-    if: ${{ github.event.issue.pull_request && github.base_ref== 'main'}} # only run on pull request comments
+    if: ${{ github.event.issue.pull_request }} # only run on pull request comments
     runs-on: ubuntu-latest
     outputs:
       file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
