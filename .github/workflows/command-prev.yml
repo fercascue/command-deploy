@@ -25,7 +25,9 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+           echo "$GITHUB_CONTEXT"
+           echo ${{github.event.issue.number}}
       - uses: github/branch-deploy@v9.1.1
         id: branch-deploy
         with:
