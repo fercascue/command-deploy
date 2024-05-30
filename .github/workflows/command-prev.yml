@@ -27,6 +27,7 @@ jobs:
           echo "sha=$(echo $PR | jq -r '.head.sha')" >> $GITHUB_OUTPUT
           echo $PR | jq -r '.head.sha'
           echo $PR | jq -r '.head.ref'
+          echo $PR | jq -r '.base.ref'
       
       # Execute IssueOps branch deployment logic, hooray!
       # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
