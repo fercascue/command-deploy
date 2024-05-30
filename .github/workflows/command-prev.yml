@@ -20,12 +20,22 @@ jobs:
     outputs:
       file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
     steps:
+      - name: "Get PR's branch name"
+        id: ref
+        run: |
+          PR=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" ${{ github.event.issue.pull_request.url }})
+          echo "sha=$(echo $PR | jq -r '.head.sha')" >> $GITHUB_OUTPUT
+          echo $PR | jq -r '.head.sha'
+          echo $PR | jq -r '.head.ref'
+      
       # Execute IssueOps branch deployment logic, hooray!
       # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+           echo "$GITHUB_CONTEXT"
+           echo ${{github.event.issue.number}}
       - uses: github/branch-deploy@v9.1.1
         id: branch-deploy
         with:
