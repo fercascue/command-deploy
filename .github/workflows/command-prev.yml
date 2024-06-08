@@ -68,11 +68,16 @@ jobs:
 
       # Do some fake "regular" deployment logic here
       # conditionally run a regular deployment
-      - name: fake regular deploy
+      - name: fake regular deploy in develop
         if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.ref.outputs.sha=='develop' && steps.branch-deploy.outputs.noop != 'true' }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 20
+      - name: fake regular deploy in main
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.ref.outputs.sha=='main' && steps.branch-deploy.outputs.noop != 'true' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 20     
       - name: Detecting changes in base folder
         id: changed-files-dir-names
         uses: tj-actions/changed-files@v35.6.4
