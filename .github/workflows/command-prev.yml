@@ -19,12 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       file_changes: ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
+      base_ref: ${{ steps.ref.outputs.sha }}
     steps:
       - name: "Get PR's branch name"
         id: ref
         run: |
           PR=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" ${{ github.event.issue.pull_request.url }})
-          echo "sha=$(echo $PR | jq -r '.head.sha')" >> $GITHUB_OUTPUT
+          echo "sha=$(echo $PR | jq -r '.base.ref')" >> $GITHUB_OUTPUT
           echo $PR | jq -r '.head.sha'
           echo $PR | jq -r '.head.ref'
           echo $PR | jq -r '.base.ref'
@@ -87,3 +88,10 @@ jobs:
         run: echo ${{ steps.changed-files-dir-names.outputs.all_changed_files }}
       - name: Output
         run: echo "I am doing a fake regular deploy"
+  complete:
+    name: Complete CI for feature 
+    needs: demo
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check all job status
+          run: echo ${{ needs.demo.outputs.base_ref }}
