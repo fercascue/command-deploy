@@ -109,7 +109,14 @@ jobs:
   complete:
     name: Complete CI for feature 
     needs: [deploy-non-prod,deploy-prod]
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
-        - name: Check all job status
-          run: echo done
+      - name: Check all job status
+        if: >-
+          ${{
+                contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+            || contains(needs.*.result, 'skipped')
+          }}
+        run: exit 1
